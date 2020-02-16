@@ -22,7 +22,7 @@ Kevin David Rosales Santana - <kevin.rosales101@alu.ulpgc.es>
       
       - 3.2.2 [Colores](#322-colores)
       
-      - 3.2.3 [Rotación](#323-rotacion)
+      - 3.2.3 [Rotación](#323-rotación)
       
       - 3.2.4 [Suprimir el último punto del perfil](#324-suprimir-el-último-punto-del-perfil)
       
@@ -130,7 +130,7 @@ Como aportación propia, se le permite al usuario que cambie el **color del Mode
 
 |                 Modelo de color verde                 |                 Modelo de color violeta                 |
 | :---------------------------------------------------: | :-----------------------------------------------------: |
-| ![model-color-green](Practica2\media\color-green.png) | ![model-color-violet](Practica2\media\color-violet.png) |
+| ![model-color-green](Practica2/media/color-green.png) | ![model-color-violet](Practica2/media/color-violet.png) |
 
 <div align="center">
    <p> Tabla 2: Colores en el Modelo 3D</p>
@@ -163,7 +163,7 @@ Así pues, pulsando (como el menú informa) las teclas `A`, `W`, `S` y  `D` se p
 
 |                    Fase A                     |                    Fase B                     |                    Fase C                     |                    Fase D                     |
 | :-------------------------------------------: | :-------------------------------------------: | :-------------------------------------------: | :-------------------------------------------: |
-| ![model-phase-a](Practica2\media\phase-a.png) | ![model-phase-b](Practica2\media\phase-b.png) | ![model-phase-c](Practica2\media\phase-c.png) | ![model-phase-d](Practica2\media\phase-d.png) |
+| ![model-phase-a](Practica2/media/phase-a.png) | ![model-phase-b](Practica2/media/phase-b.png) | ![model-phase-c](Practica2/media/phase-c.png) | ![model-phase-d](Practica2/media/phase-d.png) |
 
 <div align="center">
    <p> Tabla 3: Rotaciones en el Modelo 3D</p>
