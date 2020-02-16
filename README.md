@@ -42,6 +42,7 @@ Por tanto, en este repositorio se tiene una implementación que incluye:
 
 - **Generación de sólidos de revolución de forma sucesiva**. 
   - El modelo generado se mueve junto al ratón del usuario.
+  - Al pulsar **click derecho** tras generar el modelo 3D, se puede volver a generar otro.
 - [Aportación Propia] Cambio de **color** del objeto 3D.
 - [Aportación Propia] **Rotación** del objeto 3D.
 - [Aportación Propia] Capacidad para **eliminar el último punto del perfil** del sólido de revolución.
