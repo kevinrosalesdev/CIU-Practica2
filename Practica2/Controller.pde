@@ -35,8 +35,6 @@ class Controller{
         PZ2 = (points.get(i+1).getX()-width/2) * sin(theta);
         
         theta += dtheta;
-        print("PX1: ", PX1 + "\n");
-        print("PZ1: ", PZ1 + "\n\n");
         sor.vertex(PX1, points.get(i).getY(), PZ1);
         sor.vertex(PX2, points.get(i+1).getY(), PZ2);
       }
@@ -52,5 +50,28 @@ class Controller{
   void removeLastPoint(){
     ArrayList<Point> points = model2d.getPoints();
     if (!points.isEmpty()) points.remove(points.size()-1);
+  }
+  
+  void manageColor(){
+    if (keyCode == RIGHT) model3d.changeColorRight();
+    if (keyCode == LEFT) model3d.changeColorLeft();
+  }
+  
+  void updateKeyStatus(boolean status){
+    if (key == 'S' || key == 's') model3d.isDownPressed = status;
+    if (key == 'W' || key == 'w') model3d.isUpPressed = status;
+    
+    if (key == 'A' || key == 'a') model3d.isLeftPressed = status;
+    if (key == 'D' || key == 'd') model3d.isRightPressed = status;
+    
+  }
+  
+  void rotate3dModel(){
+    PShape sor = model3d.getSor();
+    if (model3d.isDownPressed) sor.rotateX(0.01);
+    if (model3d.isUpPressed) sor.rotateX(-0.01);
+    
+    if (model3d.isLeftPressed) sor.rotateY(0.01);
+    if (model3d.isRightPressed) sor.rotateY(-0.01);
   }
 }
