@@ -1,9 +1,14 @@
+import gifAnimation.*;
+
 Model2D model2d;
 Model3D model3d;
 Controller controller;
 boolean mouseStatus = false;
 boolean isMenu = true;
 PFont font;
+
+//GifMaker ficherogif;
+//int frameCounter;
 
 void setup(){
   surface.setTitle("Solid of Revolution");
@@ -15,9 +20,20 @@ void setup(){
   model2d = new Model2D();
   controller = new Controller(model2d, 2*PI/100);
   noLoop();
+  
+  //ficherogif = new GifMaker(this, "animation.gif");
+  //ficherogif.setRepeat(0);
+  //ficherogif.addFrame();
+  //frameCounter = 0;
 }
 
 void draw(){
+  //frameCounter++;
+  //if(frameCounter == 10){
+    //ficherogif.addFrame();
+    //frameCounter = 0;
+  //}
+  
   background(0);
   if(isMenu) drawMenu();
   else{
@@ -28,6 +44,8 @@ void draw(){
     }else{
       rect(width/2, 0, 1, height);
       drawOutline();
+      textFont(font, 20);
+      text("M: Menú y controles", 0.8*width, 0.95*height);
     }
   }
 }
@@ -80,6 +98,7 @@ void drawMenu(){
 }
 
 void mousePressed(){
+  if (isMenu) return;
   if (mouseButton == LEFT && model3d == null) controller.manageNewPoint();
   if (mouseButton == RIGHT && model3d == null && model2d.getPoints().size() >= 2){
     model3d = new Model3D();

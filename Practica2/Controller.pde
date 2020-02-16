@@ -24,15 +24,17 @@ class Controller{
     PShape sor = model3d.getSor();
     ArrayList<Point> points = model2d.getPoints();
     float theta = 0;
-    float PX1, PZ1, PX2, PZ2;
+    float PX, PX1, PZ1, PX2, PZ2;
     for(int i = 0; i < points.size()-1; i++){
       
       while(theta <= TWO_PI + 0.1){
-        PX1 = (points.get(i).getX()-width/2) * cos(theta);
-        PZ1 = (points.get(i).getX()-width/2) * sin(theta);
+        PX = (points.get(i).getX()-width/2);
+        PX1 = PX * cos(theta);
+        PZ1 = PX * sin(theta);
         
-        PX2 = (points.get(i+1).getX()-width/2) * cos(theta);
-        PZ2 = (points.get(i+1).getX()-width/2) * sin(theta);
+        PX = (points.get(i+1).getX()-width/2);
+        PX2 = PX * cos(theta);
+        PZ2 = PX * sin(theta);
         
         theta += dtheta;
         sor.vertex(PX1, points.get(i).getY(), PZ1);
