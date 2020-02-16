@@ -85,8 +85,8 @@ void drawMenu(){
   
   textFont(font, 20);
   textAlign(LEFT);
-  text("CLICK IZQUIERDO: Punto del perfil del sólido de revolución", 0.125*width, 0.75*height);
-  text("CLICK DERECHO: Generar/eliminar objeto tridimensional", 0.125*width, 0.775*height);
+  text("CLICK IZQUIERDO: Añade punto del perfil del sólido de revolución", 0.125*width, 0.75*height);
+  text("CLICK DERECHO: Genera/elimina objeto tridimensional", 0.125*width, 0.775*height);
   text("RETROCESO: Elimina el último punto del perfil del sólido de revolución", 0.125*width, 0.80*height);
   text("A/W/S/D: Rota el objeto tridimensional", 0.125*width, 0.825*height);
   text("FLECHA IZQUIERDA/FLECHA DERECHA: Cambia el color del objeto tridimensional", 0.125*width, 0.85*height);
@@ -117,7 +117,6 @@ void keyPressed(){
   }
   if(!isMenu && (key == 'M' || key == 'm')){
     isMenu = true;
-    loop();
   }
   if(!isMenu && model3d != null){
     if (key == CODED) controller.manageColor();
