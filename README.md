@@ -121,7 +121,7 @@ Teniendo en cuenta que los puntos originalmente en el perfil del sólido de revo
    <p> Fragmento de Código 1: Generación del Modelo 3D con PShape</p>
 </div>
 
-La razón por la que la condición del `while` es `theta <= TWO_PI + 0.1` es debido a que se deben tratar los **360º**. Al tratarse de triángulos, es necesario un pequeño solapamiento (`+ 0.1`) para evitar que el modelo 3D resultante contenga algún hueco vacío. El incremental `dtheta` definirá el número de triángulos finales (se entrega el proyecto con `dtheta = 2*PI/100`).
+La razón por la que la condición del `while` es `theta <= TWO_PI + 0.1` es debido a que se deben tratar los **360º**. Al tratarse de triángulos, es necesario un pequeño solapamiento (`+ 0.1`) para evitar que el modelo 3D resultante contenga algún hueco vacío. El incremental `dtheta` definirá el número de triángulos finales (se entrega el proyecto con `dtheta = 2*PI/50`).
 
 La parte imprescindible de la generación del modelo 3D es que los puntos **deben estar intercalados** para que, mediante la técnica de *TRIANGLE_STRIP* se puedan formar correctamente los triángulos.
 
@@ -170,7 +170,7 @@ Así pues, pulsando (como el menú informa) las teclas `A`, `W`, `S` y  `D` se p
    <p> Tabla 3: Rotaciones en el Modelo 3D</p>
 </div>
 
-Se debe tener en cuenta que para que el modelo 3D, al ser creado, siga de forma apropiada al ratón y al **ser rotado no supere en exceso los límites de la ventana**, se ha tenido que programar un `translate` tal que: `translate(mouseX, mouseY-500, -250)`.
+Se debe tener en cuenta que para que el modelo 3D, al ser creado, siga de forma apropiada al ratón y al **ser rotado no supere en exceso los límites de la ventana**, se ha tenido que programar un `translate` tal que: `translate(mouseX, mouseY-500, -100)`.
 
 ##### 3.2.4 Suprimir el último punto del perfil
 
