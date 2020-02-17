@@ -83,18 +83,18 @@ void drawMenu(){
   fill(255,255,255);
   text("CONTROLES", 0.5*width, 0.7*height);
   
-  textFont(font, 14);
+  textFont(font, 15);
   textAlign(LEFT);
-  text("CLICK IZQUIERDO: Añade punto del perfil del sólido de revolución", 0.125*width, 0.75*height);
-  text("CLICK DERECHO: Genera/elimina objeto tridimensional", 0.125*width, 0.775*height);
-  text("RETROCESO: Elimina el último punto del perfil del sólido de revolución", 0.125*width, 0.80*height);
-  text("A/W/S/D: Rota el objeto tridimensional", 0.125*width, 0.825*height);
-  text("FLECHA IZQUIERDA/FLECHA DERECHA: Cambia el color del objeto tridimensional", 0.125*width, 0.85*height);
-  text("M: Abre este menú", 0.125*width, 0.875*height);
+  text("CLICK IZQUIERDO: Añade punto del perfil del sólido de revolución", 0.1*width, 0.75*height);
+  text("CLICK DERECHO: Genera/elimina objeto tridimensional", 0.1*width, 0.775*height);
+  text("RETROCESO: Elimina el último punto del perfil del sólido de revolución", 0.1*width, 0.80*height);
+  text("A/W/S/D: Rota el objeto tridimensional", 0.1*width, 0.825*height);
+  text("FLECHA IZQUIERDA/FLECHA DERECHA: Cambia el color del objeto tridimensional", 0.1*width, 0.85*height);
+  text("M: Abre este menú", 0.1*width, 0.875*height);
   
   noFill();
   stroke(255);
-  rect(0.10*width, 0.65*height, 0.8*width, 0.3*height, 5);
+  rect(0.05*width, 0.65*height, 0.9*width, 0.3*height, 5);
 }
 
 void mousePressed(){
