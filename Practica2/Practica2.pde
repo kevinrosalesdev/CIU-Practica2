@@ -1,4 +1,4 @@
-import gifAnimation.*;
+//import gifAnimation.*;
 
 Model2D model2d;
 Model3D model3d;
