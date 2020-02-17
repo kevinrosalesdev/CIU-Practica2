@@ -17,7 +17,7 @@ class Point{
   }
   
   float getZ(){
-    return Z;
+    return z;
   }
   
   String toString(){
