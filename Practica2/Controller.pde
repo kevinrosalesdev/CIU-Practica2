@@ -22,16 +22,18 @@ class Controller {
   void fillVertex() {
     PShape sor = model3d.getSor();
     ArrayList<Point> points = model2d.getPoints();
-    float px, pz, pxNext, pzNext, px2, pz2, pxNext2, pzNext2;
+    float px, py, pz, pxNext, pyNext, pzNext, px2, pz2, pxNext2, pzNext2;
     for (int i = 0; i < points.size()-1; i++) {
 
-      px = (points.get(i).getX()-width/2);
-      pz = (points.get(i).getZ());
+      px = points.get(i).getX() - width/2;
+      py = points.get(i).getY();
+      pz = points.get(i).getZ();
       
-      pxNext = (points.get(i+1).getX()-width/2);
-      pzNext = (points.get(i+1).getZ());
+      pxNext = points.get(i+1).getX() - width/2;
+      pyNext = points.get(i+1).getY();
+      pzNext = points.get(i+1).getZ();
 
-      for (int j = 0; j < TWO_PI; j += theta) {
+      for (float j = 0; j < TWO_PI + 0.1; j += theta) {
 
         px2 = px * cos(theta) - pz * sin(theta);
         pz2 = px * sin(theta) + pz * cos(theta);
@@ -39,8 +41,8 @@ class Controller {
         pxNext2 = pxNext * cos(theta) - pzNext * sin(theta);
         pzNext2 = pxNext * sin(theta) + pzNext * cos(theta);
 
-        sor.vertex(px2, points.get(i).getY(), pz2);
-        sor.vertex(pxNext2, points.get(i+1).getY(), pzNext2);
+        sor.vertex(px2, py, pz2);
+        sor.vertex(pxNext2, pyNext, pzNext2);
         
         px = px2;
         pz = pz2;

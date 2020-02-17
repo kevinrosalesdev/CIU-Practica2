@@ -18,7 +18,7 @@ void setup(){
   stroke(255);
   strokeWeight(2);
   model2d = new Model2D();
-  controller = new Controller(model2d, TWO_PI/25);
+  controller = new Controller(model2d, TWO_PI/50);
   noLoop();
   
   //ficherogif = new GifMaker(this, "animation.gif");
@@ -30,8 +30,8 @@ void setup(){
 void draw(){
   //frameCounter++;
   //if(frameCounter == 10){
-    //ficherogif.addFrame();
-    //frameCounter = 0;
+  //  ficherogif.addFrame();
+  //  frameCounter = 0;
   //}
   background(0);
   if(isMenu) drawMenu();
@@ -68,6 +68,8 @@ void drawOutline(){
 
 void drawMenu(){
  
+  controller.updateKeyStatus(false);
+  
   textAlign(CENTER);
   textFont(font, 40);
   fill(156,228,255);
@@ -89,9 +91,10 @@ void drawMenu(){
   text("CLICK IZQUIERDO: Añade punto del perfil del sólido de revolución", 0.1*width, 0.75*height);
   text("CLICK DERECHO: Genera/elimina objeto tridimensional", 0.1*width, 0.775*height);
   text("RETROCESO: Elimina el último punto del perfil del sólido de revolución", 0.1*width, 0.80*height);
-  text("A/W/S/D: Rota el objeto tridimensional", 0.1*width, 0.825*height);
-  text("FLECHA IZQUIERDA/FLECHA DERECHA: Cambia el color del objeto tridimensional", 0.1*width, 0.85*height);
-  text("M: Abre este menú", 0.1*width, 0.875*height);
+  text("MOVER EL RATÓN: Mueve el objeto tridimensional", 0.1*width, 0.825*height);
+  text("A/W/S/D: Rota el objeto tridimensional", 0.1*width, 0.85*height);
+  text("FLECHA IZQUIERDA/FLECHA DERECHA: Cambia el color del objeto tridimensional", 0.1*width, 0.875*height);
+  text("M: Abre este menú", 0.1*width, 0.9*height);
   
   noFill();
   stroke(255);
@@ -112,7 +115,7 @@ void mousePressed(){
 }
 
 void keyPressed(){
-  if(isMenu && (key == ENTER)){
+  if(isMenu && (key == ENTER || key == RETURN)){
     isMenu = false;
     loop();
   }

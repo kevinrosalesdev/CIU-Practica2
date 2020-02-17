@@ -55,10 +55,6 @@ Por tanto, en este repositorio se tiene una implementación que incluye:
    <p>Figura 1: Muestra del resultado</p>
 </div>
 
-**NOTA IMPORTANTE**: En caso de no poder ejecutar el modelo 3D, pruebe a disminuir la cantidad de triángulos generados aumentando la variable `theta` en la línea 21 del fichero [Practica2.pde](Practica2/Practica2.pde):
-
-`controller = new Controller(model2d, THETA);`
-
 ### 3. Descripción del trabajo realizado
 
 #### 3.1 Estructura de ficheros
@@ -98,16 +94,18 @@ Teniendo en cuenta que los puntos del perfil tienen `z = 0` y que las coordenada
   void fillVertex() {
     PShape sor = model3d.getSor();
     ArrayList<Point> points = model2d.getPoints();
-    float px, pz, pxNext, pzNext, px2, pz2, pxNext2, pzNext2;
+    float px, py, pz, pxNext, pyNext, pzNext, px2, pz2, pxNext2, pzNext2;
     for (int i = 0; i < points.size()-1; i++) {
 
-      px = (points.get(i).getX()-width/2);
-      pz = (points.get(i).getZ());
+      px = points.get(i).getX() - width/2;
+      py = points.get(i).getY();
+      pz = points.get(i).getZ();
       
-      pxNext = (points.get(i+1).getX()-width/2);
-      pzNext = (points.get(i+1).getZ());
+      pxNext = points.get(i+1).getX() - width/2;
+      pyNext = points.get(i+1).getY();
+      pzNext = points.get(i+1).getZ();
 
-      for (int j = 0; j < TWO_PI; j += theta) {
+      for (float j = 0; j < TWO_PI + 0.1; j += theta) {
 
         px2 = px * cos(theta) - pz * sin(theta);
         pz2 = px * sin(theta) + pz * cos(theta);
@@ -115,8 +113,8 @@ Teniendo en cuenta que los puntos del perfil tienen `z = 0` y que las coordenada
         pxNext2 = pxNext * cos(theta) - pzNext * sin(theta);
         pzNext2 = pxNext * sin(theta) + pzNext * cos(theta);
 
-        sor.vertex(px2, points.get(i).getY(), pz2);
-        sor.vertex(pxNext2, points.get(i+1).getY(), pzNext2);
+        sor.vertex(px2, py, pz2);
+        sor.vertex(pxNext2, pyNext, pzNext2);
         
         px = px2;
         pz = pz2;
@@ -133,7 +131,7 @@ Teniendo en cuenta que los puntos del perfil tienen `z = 0` y que las coordenada
    <p> Fragmento de Código 1: Generación del Modelo 3D con PShape</p>
 </div>
 
-La razón por la que la condición del `for` es `j <= TWO_PI` es debido a que se deben tratar los **360º**. `Theta`, que mide la cantidad de rotación, definirá el número de triángulos finales (se entrega el proyecto con `dtheta = 2*PI/25`).
+La razón por la que la condición del `for` es `j <= TWO_PI + 0.1 ` es debido a que se deben tratar los **360º** (más un pequeño solapamiento para evitar huecos en el modelo 3D resultante). `Theta`, que mide la cantidad de rotación, definirá el número de triángulos finales. El valor `theta` con el que se entrega el proyecto es `TWO_PI/50`.
 
 La parte imprescindible de la generación del modelo 3D es que los puntos **deben estar intercalados** para que, mediante la técnica de *TRIANGLE_STRIP* se puedan formar correctamente los triángulos.
 
@@ -203,11 +201,16 @@ Al pulsar `ENTER`, se llama a `loop()` (reanudando el bucle del `draw()`) y se d
 
 **Nota importante**: Para pulsar `ENTER`, la ventana de este debe estar *focuseada*.
 
-La idea de que los controles no aparezcan siempre a la hora de hacer el perfil del sólido de revolución **es no llenar al usuario de información por pantalla.** Por ello, si quiere volver a ver **los controles** si tiene cualquier duda **tan solo debe pulsar 'M'** como se ve en la siguiente imagen:
+La idea de que los controles no aparezcan siempre a la hora de hacer el perfil del sólido de revolución o de observar el modelo 3D generado **es no llenar al usuario de información por pantalla.** Por ello, si quiere volver a ver **los controles** si tiene cualquier duda **tan solo debe pulsar 'M'** como se ve en las siguientes imágenes:
+
+|                      Perfil                       |                      Modelo 3D                      |
+| :-----------------------------------------------: | :-------------------------------------------------: |
+| ![model-phase-a](Practica2/media/menu-option.png) | ![model-phase-a](Practica2/media/menu-option-2.png) |
+
+
 
 <div align="center">
-   <img src="Practica2/media/menu-option.png" alt="menu"></img>
-   <p>Figura 4: Opción de volver a visualizar el menú y los controles</p>
+   <p>Tabla 4: Opciones para visualizar el menú y controles</p>
 </div>
 
 **Los procesos realizados tras ir al menú y volver no se pierden.**
