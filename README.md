@@ -95,7 +95,7 @@ Cada triángulo se forma gracias a que los puntos del perfil del sólido de revo
 Teniendo en cuenta que los puntos del perfil tienen `z = 0` y que las coordenadas originales se sitúan en la mitad derecha del generador (con lo que es necesario situarlo alrededor `x=0` restándole `width/2`), el código generador de los vértices resulta de esta manera:
 
 ```java
-   void fillVertex() {
+  void fillVertex() {
     PShape sor = model3d.getSor();
     ArrayList<Point> points = model2d.getPoints();
     float px, pz, pxNext, pzNext, px2, pz2, pxNext2, pzNext2;
@@ -133,7 +133,7 @@ Teniendo en cuenta que los puntos del perfil tienen `z = 0` y que las coordenada
    <p> Fragmento de Código 1: Generación del Modelo 3D con PShape</p>
 </div>
 
-La razón por la que la condición del `for` es `j <= TWO_PI` es debido a que se deben tratar los **360º**. `Theta`, que mide la cantidad de rotación, definirá el número de triángulos finales (se entrega el proyecto con `dtheta = 2*PI/20`).
+La razón por la que la condición del `for` es `j <= TWO_PI` es debido a que se deben tratar los **360º**. `Theta`, que mide la cantidad de rotación, definirá el número de triángulos finales (se entrega el proyecto con `dtheta = 2*PI/25`).
 
 La parte imprescindible de la generación del modelo 3D es que los puntos **deben estar intercalados** para que, mediante la técnica de *TRIANGLE_STRIP* se puedan formar correctamente los triángulos.
 
