@@ -79,7 +79,7 @@ A la hora de realizar el **sólido de revolución** se ha tenido que tomar una s
 
 ##### 3.2.1 Generación del Modelo 3D
 
-A la hora de generar el sólido de revolución, se recogen los puntos que el usuario ha introducido previamente para formar **un perfil del sólido de revolución.** A continuación, utilizando *PShape* con *TRIANGLE_STRIP*, se va formando **el modelo 3D con los triángulos de dichos puntos. **
+A la hora de generar el sólido de revolución, se recogen los puntos que el usuario ha introducido previamente para formar **un perfil del sólido de revolución.** A continuación, utilizando *PShape* con *TRIANGLE_STRIP*, se va formando **el modelo 3D con los triángulos de dichos puntos.**
 
 Cada triángulo se forma gracias a que los puntos del perfil del sólido de revolución se **rotan** usando las siguientes fórmulas (recogidas de [indicaciones de la práctica (referencia 1)](#6-referencias-y-herramientas-utilizadas)):
 
