@@ -55,6 +55,10 @@ Por tanto, en este repositorio se tiene una implementación que incluye:
    <p>Figura 1: Muestra del resultado</p>
 </div>
 
+**NOTA IMPORTANTE**: En caso de no poder ejecutar el modelo 3D, pruebe a disminuir la cantidad de triángulos generados aumentando la variable `theta` en la línea 21 del fichero [Practica2.pde](Practica2/Practica2.pde):
+
+`controller = new Controller(model2d, THETA);`
+
 ### 3. Descripción del trabajo realizado
 
 #### 3.1 Estructura de ficheros
@@ -88,30 +92,38 @@ Cada triángulo se forma gracias a que los puntos del perfil del sólido de revo
    <p>Figura 2: Fórmulas de Rotación</p>
 </div>
 
-Teniendo en cuenta que los puntos originalmente en el perfil del sólido de revolución carecen de profundidad (`z1 = 0`) y que las coordenadas originales se sitúan en la mitad derecha del generador (con lo que es necesario situarlo alrededor `x=0` restándole `width/2`), el código generador de los vértices resulta de esta manera:
+Teniendo en cuenta que los puntos del perfil tienen `z = 0` y que las coordenadas originales se sitúan en la mitad derecha del generador (con lo que es necesario situarlo alrededor `x=0` restándole `width/2`), el código generador de los vértices resulta de esta manera:
 
 ```java
-  void fillVertex(){
+   void fillVertex() {
     PShape sor = model3d.getSor();
     ArrayList<Point> points = model2d.getPoints();
-    float theta = 0;
-    float PX, PX1, PZ1, PX2, PZ2;
-    for(int i = 0; i < points.size()-1; i++){
+    float px, pz, pxNext, pzNext, px2, pz2, pxNext2, pzNext2;
+    for (int i = 0; i < points.size()-1; i++) {
+
+      px = (points.get(i).getX()-width/2);
+      pz = (points.get(i).getZ());
       
-      while(theta <= TWO_PI + 0.1){
-        PX = (points.get(i).getX()-width/2);
-        PX1 = PX * cos(theta);
-        PZ1 = PX * sin(theta);
+      pxNext = (points.get(i+1).getX()-width/2);
+      pzNext = (points.get(i+1).getZ());
+
+      for (int j = 0; j < TWO_PI; j += theta) {
+
+        px2 = px * cos(theta) - pz * sin(theta);
+        pz2 = px * sin(theta) + pz * cos(theta);
+
+        pxNext2 = pxNext * cos(theta) - pzNext * sin(theta);
+        pzNext2 = pxNext * sin(theta) + pzNext * cos(theta);
+
+        sor.vertex(px2, points.get(i).getY(), pz2);
+        sor.vertex(pxNext2, points.get(i+1).getY(), pzNext2);
         
-        PX = (points.get(i+1).getX()-width/2);
-        PX2 = PX * cos(theta);
-        PZ2 = PX * sin(theta);
+        px = px2;
+        pz = pz2;
         
-        theta += dtheta;
-        sor.vertex(PX1, points.get(i).getY(), PZ1);
-        sor.vertex(PX2, points.get(i+1).getY(), PZ2);
+        pxNext = pxNext2;
+        pzNext = pzNext2;
       }
-      theta = 0;
     }
     sor.endShape();
   }
@@ -121,7 +133,7 @@ Teniendo en cuenta que los puntos originalmente en el perfil del sólido de revo
    <p> Fragmento de Código 1: Generación del Modelo 3D con PShape</p>
 </div>
 
-La razón por la que la condición del `while` es `theta <= TWO_PI + 0.1` es debido a que se deben tratar los **360º**. Al tratarse de triángulos, es necesario un pequeño solapamiento (`+ 0.1`) para evitar que el modelo 3D resultante contenga algún hueco vacío. El incremental `dtheta` definirá el número de triángulos finales (se entrega el proyecto con `dtheta = 2*PI/50`).
+La razón por la que la condición del `for` es `j <= TWO_PI` es debido a que se deben tratar los **360º**. `Theta`, que mide la cantidad de rotación, definirá el número de triángulos finales (se entrega el proyecto con `dtheta = 2*PI/20`).
 
 La parte imprescindible de la generación del modelo 3D es que los puntos **deben estar intercalados** para que, mediante la técnica de *TRIANGLE_STRIP* se puedan formar correctamente los triángulos.
 

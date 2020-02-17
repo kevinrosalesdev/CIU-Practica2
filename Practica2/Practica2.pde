@@ -18,7 +18,7 @@ void setup(){
   stroke(255);
   strokeWeight(2);
   model2d = new Model2D();
-  controller = new Controller(model2d, 2*PI/50);
+  controller = new Controller(model2d, TWO_PI/25);
   noLoop();
   
   //ficherogif = new GifMaker(this, "animation.gif");

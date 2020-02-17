@@ -1,10 +1,11 @@
 class Point{
 
-  float x, y;
+  float x, y, z;
   
-  Point(float x, float y){
+  Point(float x, float y, float z){
     this.x = x;
     this.y = y;
+    this.z = z;
   }
   
   float getX(){
@@ -15,7 +16,11 @@ class Point{
     return y;
   }
   
+  float getZ(){
+    return z;
+  }
+  
   String toString(){
-    return "(" + x + "," + y + ")";
+    return "(" + x + "," + y + "," + z + ")";
   }
 }
