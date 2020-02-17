@@ -33,20 +33,21 @@ void draw(){
     //ficherogif.addFrame();
     //frameCounter = 0;
   //}
-  
   background(0);
   if(isMenu) drawMenu();
   else{
     if(model3d != null){
+      pushMatrix();
       translate(mouseX, mouseY-500, -100);
       shape(model3d.getSor());
       controller.rotate3dModel();
+      popMatrix();
     }else{
       rect(width/2, 0, 1, height);
       drawOutline();
       textFont(font, 15);
-      text("M: Menú y controles", 0.75*width, 0.95*height);
     }
+    text("M: Menú y controles", 0.75*width, 0.95*height);
   }
 }
 
